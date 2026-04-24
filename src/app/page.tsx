@@ -1,4 +1,8 @@
-import { redirect } from 'next/navigation'
+'use client'
+import { useEffect } from 'react'
 export default function Page() {
-  redirect('/v2.html')
+  useEffect(() => {
+    window.location.replace('/v2.html')
+  }, [])
+  return null
 }
