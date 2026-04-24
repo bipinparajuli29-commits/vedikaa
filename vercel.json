@@ -1,0 +1,11 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "next build",
+  "outputDirectory": ".next",
+  "installCommand": "npm install",
+  "devCommand": "next dev",
+  "env": {
+    "NEXT_PUBLIC_SITE_URL": "https://vedikaweddings.com",
+    "NEXT_PUBLIC_WHATSAPP_NUMBER": "9779800000000"
+  }
+}

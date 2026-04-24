@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+  --font-jost: 'Jost', system-ui, sans-serif;
+  --gold: #C9A84C;
+  --gold-light: #E8D5A3;
+  --gold-dark: #8B6914;
+  --black: #0A0A0A;
+  --off-black: #111111;
+  --dark: #1A1A1A;
+  --white: #FDFCF8;
+  --off-white: #F5F2EA;
+  --red: #8B1A1A;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-jost);
+  font-weight: 300;
+  overflow-x: hidden;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--gold); }
+
+/* Selection */
+::selection { background: var(--gold); color: var(--black); }
+
+/* Typography helpers */
+.font-serif { font-family: var(--font-cormorant); }
+.font-sans  { font-family: var(--font-jost); }
+
+/* Section tag */
+.section-tag {
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+/* Gold divider */
+.gold-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: rgba(201,168,76,0.4);
+  margin: 1.5rem 0;
+}
+.gold-divider::before,
+.gold-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(201,168,76,0.15);
+}
+
+/* Buttons */
+.btn-gold {
+  display: inline-block;
+  padding: 0.95rem 2.5rem;
+  background: var(--gold);
+  color: var(--black);
+  font-family: var(--font-jost);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s var(--ease);
+}
+.btn-gold:hover { background: var(--gold-light); }
+
+.btn-outline {
+  display: inline-block;
+  padding: 0.95rem 2.5rem;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.35);
+  color: var(--white);
+  font-family: var(--font-jost);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s var(--ease);
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+/* Form inputs */
+.form-input {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--white);
+  padding: 0.85rem 1rem;
+  font-family: var(--font-jost);
+  font-size: 0.85rem;
+  font-weight: 300;
+  width: 100%;
+  transition: border-color 0.3s;
+  outline: none;
+}
+.form-input:focus { border-color: rgba(201,168,76,0.5); }
+.form-input::placeholder { color: rgba(255,255,255,0.2); }
+
+/* Testimonials track */
+@keyframes scrollTrack {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.testimonials-track {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  animation: scrollTrack 40s linear infinite;
+}
+.testimonials-track:hover { animation-play-state: paused; }
+
+/* Scroll line anim */
+@keyframes scrollPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+/* WhatsApp floating button */
+.whatsapp-float {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 900;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+  cursor: pointer;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s;
+}
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(37,211,102,0.5);
+}
+
+/* Book now sticky bar (mobile) */
+.sticky-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 800;
+  background: var(--gold);
+  color: var(--black);
+  padding: 1rem;
+  text-align: center;
+  font-family: var(--font-jost);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: none;
+}
+@media (max-width: 768px) {
+  .sticky-cta { display: block; }
+  .whatsapp-float { bottom: 5rem; }
+}
+
+/* Lightbox */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* Portfolio hover */
+.portfolio-item { position: relative; overflow: hidden; cursor: pointer; }
+.portfolio-item img { transition: transform 0.7s var(--ease); }
+.portfolio-item:hover img { transform: scale(1.08); }
+.portfolio-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.2) 60%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+}
+.portfolio-item:hover .portfolio-overlay { opacity: 1; }
+
+/* Plan card hover */
+.plan-card-img { transition: all 0.5s var(--ease); }
+.plan-card:hover .plan-card-img { filter: brightness(0.35) !important; transform: scale(1.04); }
