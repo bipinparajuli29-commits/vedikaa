@@ -6,7 +6,7 @@ import { getAllPosts } from '@/lib/blog'
 export const metadata: Metadata = {
   title: 'Wedding Journal | Tips, Guides & Inspiration',
   description:
-    'Expert wedding planning tips, venue guides, style inspiration, and real wedding stories from Vedika Weddings — Nepal's luxury wedding photographers.',
+    "Expert wedding planning tips, venue guides, style inspiration, and real wedding stories from Vedika Weddings — Nepal's luxury wedding photographers.",
   keywords: ['wedding blog Nepal', 'wedding planning tips Nepal', 'Nepali wedding guide'],
 }
 
